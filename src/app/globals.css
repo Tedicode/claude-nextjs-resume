@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=DM+Mono:ital,wght@0,300;0,400;1,300&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --paper: #faf9f6;
+  --paper-border: #d0cfc8;
+  --ink: #111111;
+  --ink-secondary: #444444;
+  --ink-muted: #777777;
+  --ink-faint: #aaaaaa;
+  --font-serif: 'IM Fell English', Georgia, serif;
+  --font-mono: 'DM Mono', 'Courier New', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background: #f0ede6;
+  min-height: 100%;
+}
+
+body {
+  font-family: var(--font-serif);
+  background: #f0ede6;
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(0, 0, 0, 0.1);
+}
