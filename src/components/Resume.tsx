@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Story, stories, bulletStoryMap } from '@/data/stories'
-import { Skill, skills } from '@/data/skills'
+import { Skill, getResumeSkills, getResumeTools } from '@/data/skills'
 
 type Bullet = {
   text: string
@@ -30,7 +30,8 @@ export default function Resume({ activeStory, activeSkill, onBulletClick, onSkil
   const isActiveStoryOrSkill = activeStory !== null || activeSkill !== null
   
   const storyMap = Object.fromEntries(stories.map(s => [s.id, s]))
-  const skillMap = Object.fromEntries(skills.map((s: Skill) => [s.id, s])) as Record<string, Skill>
+  const primarySkills = getResumeSkills()
+  const toolSkills = getResumeTools()
 
   return (
     <motion.div
@@ -126,11 +127,8 @@ export default function Resume({ activeStory, activeSkill, onBulletClick, onSkil
 
       {/* Skills */}
       <SectionLabel>Skills</SectionLabel>
-      <p style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: '#555', lineHeight: 1.7 }}>
-        JavaScript · React · Redux · Node · REST · Express · Sequelize · PostgreSQL · HTML/CSS · MUI · emotion · WCAG 2.0
-        <br />
-        <span style={{ color: '#888' }}>Tools:</span> Cursor IDE · MCP Servers · Storyblok · Storybook · Webpack · Babel · Git · GitHub · Figma · Jira
-      </p>
+      <SkillBlock skills={primarySkills} onSkillClick={onSkillClick} />
+      <SkillBlock skills={toolSkills} label="Tools:" onSkillClick={onSkillClick} />
 
       <Divider style={{ marginTop: '1.2rem' }} />
 
@@ -239,6 +237,39 @@ function BulletItem({ bullet, onClick }: { bullet: Bullet; onClick?: () => void 
         }}>↗</span>
       )}
     </li>
+  )
+}
+
+function SkillBlock({
+  skills, label, onSkillClick,
+}: {
+  skills: Skill[]
+  label?: string
+  onSkillClick: (skill: Skill) => void
+}) {
+  return (
+    <p style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: '#555', lineHeight: 1.7, margin: 0 }}>
+      {label && <span style={{ color: '#888' }}>{label} </span>}
+      {skills.map((skill, i) => (
+        <span key={skill.id}>
+          {i > 0 && ' · '}
+          <SkillItem skill={skill} onClick={() => onSkillClick(skill)} />
+        </span>
+      ))}
+    </p>
+  )
+}
+
+function SkillItem({ skill, onClick }: { skill: Skill; onClick: () => void }) {
+  return (
+    <span
+      onClick={onClick}
+      style={{ cursor: 'pointer' }}
+      onMouseEnter={e => { (e.currentTarget as HTMLSpanElement).style.color = '#111' }}
+      onMouseLeave={e => { (e.currentTarget as HTMLSpanElement).style.color = 'inherit' }}
+    >
+      {skill.name}
+    </span>
   )
 }
 
