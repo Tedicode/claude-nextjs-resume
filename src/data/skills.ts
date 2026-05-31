@@ -56,22 +56,49 @@ export const skills: Skill[] = [
   { id: 'motion', name: 'Motion', description: 'A library for creating animations and transitions', skillLevel: 'beginner', associations: [{ type: 'project', name: 'Interactive Resume with Motion', url: 'https://motion-nextjs-resume.vercel.app' }] },
 ]
 
-export const resumeSkillIds = [
-  'javascript', 'react', 'redux', 'node', 'rest', 'express', 'sequelize',
-  'postgresql', 'html-css', 'mui', 'emotion', 'wcag-2.0',
-] as const
+export type ResumeSkillEntry = {
+  skillId: string
+  clickable?: boolean
+}
 
-export const resumeToolIds = [
-  'cursor-ide', 'mcp-servers', 'storyblok', 'storybook', 'webpack', 'babel',
-  'git', 'github', 'figma', 'jira',
-] as const
+export const resumePrimarySkills: ResumeSkillEntry[] = [
+  { skillId: 'javascript', clickable: true },
+  { skillId: 'react', clickable: true },
+  { skillId: 'redux', clickable: true },
+  { skillId: 'node', clickable: true },
+  { skillId: 'rest', clickable: true },
+  { skillId: 'express', clickable: true },
+  { skillId: 'sequelize', clickable: true },
+  { skillId: 'postgresql', clickable: true },
+  { skillId: 'html-css' },
+  { skillId: 'mui', clickable: true },
+  { skillId: 'emotion', clickable: true },
+  { skillId: 'wcag-2.0' },
+  { skillId: 'nextjs', clickable: true },
+  { skillId: 'typescript', clickable: true },
+  { skillId: 'motion', clickable: true },
+]
+
+export const resumeTools: ResumeSkillEntry[] = [
+  { skillId: 'cursor-ide' },
+  { skillId: 'mcp-servers' },
+  { skillId: 'storyblok', clickable: true },
+  { skillId: 'storybook' },
+  { skillId: 'webpack' },
+  { skillId: 'babel' },
+  { skillId: 'git' },
+  { skillId: 'github' },
+  { skillId: 'figma' },
+  { skillId: 'jira', clickable: true },
+]
 
 const skillMap = Object.fromEntries(skills.map(s => [s.id, s]))
 
-export function getResumeSkills(): Skill[] {
-  return resumeSkillIds.map(id => skillMap[id]).filter(Boolean)
-}
-
-export function getResumeTools(): Skill[] {
-  return resumeToolIds.map(id => skillMap[id]).filter(Boolean)
+export function resolveResumeSkillEntries(entries: ResumeSkillEntry[]): { skill: Skill; clickable: boolean }[] {
+  return entries
+    .map(({ skillId, clickable }) => {
+      const skill = skillMap[skillId]
+      return skill ? { skill, clickable: !!clickable } : null
+    })
+    .filter((entry): entry is { skill: Skill; clickable: boolean } => entry !== null)
 }

@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Story, stories, bulletStoryMap } from '@/data/stories'
-import { Skill, getResumeSkills, getResumeTools } from '@/data/skills'
+import { Skill, resumePrimarySkills, resumeTools, resolveResumeSkillEntries } from '@/data/skills'
 
 type Bullet = {
   text: string
@@ -30,8 +30,8 @@ export default function Resume({ activeStory, activeSkill, onBulletClick, onSkil
   const isActiveStoryOrSkill = activeStory !== null || activeSkill !== null
   
   const storyMap = Object.fromEntries(stories.map(s => [s.id, s]))
-  const primarySkills = getResumeSkills()
-  const toolSkills = getResumeTools()
+  const primarySkills = resolveResumeSkillEntries(resumePrimarySkills)
+  const toolSkills = resolveResumeSkillEntries(resumeTools)
 
   return (
     <motion.div
@@ -127,8 +127,8 @@ export default function Resume({ activeStory, activeSkill, onBulletClick, onSkil
 
       {/* Skills */}
       <SectionLabel>Skills</SectionLabel>
-      <SkillBlock skills={primarySkills} onSkillClick={onSkillClick} />
-      <SkillBlock skills={toolSkills} label="Tools:" onSkillClick={onSkillClick} />
+      <SkillBlock entries={primarySkills} onSkillClick={onSkillClick} />
+      <SkillBlock entries={toolSkills} label="Tools:" onSkillClick={onSkillClick} />
 
       <Divider style={{ marginTop: '1.2rem' }} />
 
@@ -241,34 +241,52 @@ function BulletItem({ bullet, onClick }: { bullet: Bullet; onClick?: () => void 
 }
 
 function SkillBlock({
-  skills, label, onSkillClick,
+  entries, label, onSkillClick,
 }: {
-  skills: Skill[]
+  entries: { skill: Skill; clickable: boolean }[]
   label?: string
   onSkillClick: (skill: Skill) => void
 }) {
   return (
     <p style={{ fontFamily: 'var(--font-mono)', fontSize: '12px', color: '#555', lineHeight: 1.7, margin: 0 }}>
       {label && <span style={{ color: '#888' }}>{label} </span>}
-      {skills.map((skill, i) => (
+      {entries.map(({ skill, clickable }, i) => (
         <span key={skill.id}>
           {i > 0 && ' · '}
-          <SkillItem skill={skill} onClick={() => onSkillClick(skill)} />
+          <SkillItem
+            skill={skill}
+            onClick={clickable ? () => onSkillClick(skill) : undefined}
+          />
         </span>
       ))}
     </p>
   )
 }
 
-function SkillItem({ skill, onClick }: { skill: Skill; onClick: () => void }) {
+function SkillItem({ skill, onClick }: { skill: Skill; onClick?: () => void }) {
+  const isClickable = !!onClick
+
   return (
     <span
       onClick={onClick}
-      style={{ cursor: 'pointer' }}
-      onMouseEnter={e => { (e.currentTarget as HTMLSpanElement).style.color = '#111' }}
-      onMouseLeave={e => { (e.currentTarget as HTMLSpanElement).style.color = 'inherit' }}
+      style={{ cursor: isClickable ? 'pointer' : 'default' }}
+      onMouseEnter={e => {
+        if (isClickable) (e.currentTarget as HTMLSpanElement).style.color = '#111'
+      }}
+      onMouseLeave={e => {
+        if (isClickable) (e.currentTarget as HTMLSpanElement).style.color = 'inherit'
+      }}
     >
       {skill.name}
+      {isClickable && (
+        <span style={{
+          fontFamily: 'var(--font-mono)',
+          fontSize: '9px',
+          color: '#999',
+          letterSpacing: '0.05em',
+          marginLeft: '2px',
+        }}>↗</span>
+      )}
     </span>
   )
 }
