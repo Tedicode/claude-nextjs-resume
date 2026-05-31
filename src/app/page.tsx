@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Resume from '@/components/Resume'
 import StoryOverlay from '@/components/StoryOverlay'
 import { Story } from '@/data/stories'
@@ -10,6 +10,12 @@ import SkillOverlay from '@/components/SkillOverlay'
 export default function Home() {
   const [activeStory, setActiveStory] = useState<Story | null>(null)
   const [activeSkill, setActiveSkill] = useState<Skill | null>(null)
+
+  useEffect(() => {
+    if (activeStory || activeSkill) {
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+    }
+  }, [activeStory, activeSkill])
 
   return (
     <main style={{
