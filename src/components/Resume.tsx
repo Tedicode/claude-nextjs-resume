@@ -59,7 +59,7 @@ export default function Resume({ activeStory, activeSkill, onBulletClick, onSkil
           textTransform: 'uppercase',
           marginBottom: '8px',
         }}>
-          Frontend Software Developer
+          Software Engineer
         </p>
         <div style={{
           fontFamily: 'var(--font-mono)',
@@ -70,10 +70,10 @@ export default function Resume({ activeStory, activeSkill, onBulletClick, onSkil
           gap: '16px',
           flexWrap: 'wrap',
         }}>
-          <span>tmlowney1@gmail.com</span>
           <a href="https://linkedin.com/in/tedilowney" style={{ color: '#555', textDecoration: 'none' }}>
             linkedin.com/in/tedilowney
           </a>
+          <span>tmlowney1@gmail.com</span>
           <a href="https://github.com/Tedicode" style={{ color: '#555', textDecoration: 'none' }}>
             github.com/Tedicode
           </a>
@@ -86,7 +86,7 @@ export default function Resume({ activeStory, activeSkill, onBulletClick, onSkil
       <SectionLabel>Experience</SectionLabel>
 
       <JobBlock
-        title="Frontend Software Developer"
+        title="Frontend Software Engineer"
         date="Jan 2023 – Present"
         company="New York Life Insurance Company — New York, NY / Remote"
         bullets={nylBullets}
