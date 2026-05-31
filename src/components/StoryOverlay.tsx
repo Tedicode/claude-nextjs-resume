@@ -3,12 +3,13 @@
 import { motion, AnimatePresence } from 'framer-motion'
 import { Story } from '@/data/stories'
 
+
 type Props = {
-  story: Story | null
-  onClose: () => void
+    story?: Story | null
+    onCloseStory: () => void
 }
 
-export default function StoryOverlay({ story, onClose }: Props) {
+export default function StoryOverlay({ story, onCloseStory }: Props) {
   return (
       <AnimatePresence>
         {story && (
@@ -180,7 +181,7 @@ export default function StoryOverlay({ story, onClose }: Props) {
 
               {/* Close button */}
               <button
-                  onClick={onClose}
+                  onClick={onCloseStory}
                   style={{
                     fontFamily: 'var(--font-mono)',
                     fontSize: '11px',

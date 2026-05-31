@@ -4,9 +4,12 @@ import { useState } from 'react'
 import Resume from '@/components/Resume'
 import StoryOverlay from '@/components/StoryOverlay'
 import { Story } from '@/data/stories'
+import { Skill } from '@/data/skills'
+import SkillOverlay from '@/components/SkillOverlay'
 
 export default function Home() {
   const [activeStory, setActiveStory] = useState<Story | null>(null)
+  const [activeSkill, setActiveSkill] = useState<Skill | null>(null)
 
   return (
     <main style={{
@@ -29,12 +32,17 @@ export default function Home() {
       }}>
         <Resume
           activeStory={activeStory}
+          activeSkill={activeSkill}
           onBulletClick={(story) => setActiveStory(story)}
+          onSkillClick={(skill) => setActiveSkill(skill)}
         />
         <StoryOverlay
           story={activeStory}
-          onClose={() => setActiveStory(null)}
-        />
+          onCloseStory={() => setActiveStory(null)} />
+
+        <SkillOverlay
+          skill={activeSkill}
+          onCloseSkill={() => setActiveSkill(null)} />
       </div>
     </main>
   )

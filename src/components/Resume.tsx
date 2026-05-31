@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import { Story, stories, bulletStoryMap } from '@/data/stories'
+import { Skill, skills } from '@/data/skills'
 
 type Bullet = {
   text: string
@@ -20,19 +21,22 @@ const nylBullets: Bullet[] = [
 
 type Props = {
   activeStory: Story | null
+  activeSkill: Skill | null
   onBulletClick: (story: Story) => void
+  onSkillClick: (skill: Skill) => void
 }
 
-export default function Resume({ activeStory, onBulletClick }: Props) {
-  const isActive = activeStory !== null
-
+export default function Resume({ activeStory, activeSkill, onBulletClick, onSkillClick }: Props) {
+  const isActiveStoryOrSkill = activeStory !== null || activeSkill !== null
+  
   const storyMap = Object.fromEntries(stories.map(s => [s.id, s]))
+  const skillMap = Object.fromEntries(skills.map((s: Skill) => [s.id, s])) as Record<string, Skill>
 
   return (
     <motion.div
-      animate={{ opacity: isActive ? 0.07 : 1, filter: isActive ? 'blur(1px)' : 'blur(0px)' }}
+      animate={{ opacity: isActiveStoryOrSkill ? 0.07 : 1, filter: isActiveStoryOrSkill ? 'blur(1px)' : 'blur(0px)' }}
       transition={{ duration: 0.45, ease: 'easeInOut' }}
-      style={{ pointerEvents: isActive ? 'none' : 'auto' }}
+      style={{ pointerEvents: isActiveStoryOrSkill ? 'none' : 'auto' }}
     >
       {/* Header */}
       <div style={{ marginBottom: '0.5rem' }}>
