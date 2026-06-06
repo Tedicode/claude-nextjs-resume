@@ -51,7 +51,7 @@ export default async function Image() {
           letterSpacing: '0.18em',
           textTransform: 'uppercase',
           color: '#999',
-          marginBottom: '28px',
+          marginBottom: '52px',
           display: 'flex',
         }}>
           Interactive Resume
@@ -63,7 +63,7 @@ export default async function Image() {
           fontWeight: 400,
           color: '#111',
           lineHeight: 1.05,
-          marginBottom: '20px',
+          marginBottom: '24px',
           display: 'flex',
         }}>
           Tedi Lowney
@@ -76,10 +76,11 @@ export default async function Image() {
           letterSpacing: '0.12em',
           textTransform: 'uppercase',
           color: '#555',
-          marginBottom: '40px',
+          lineHeight: 1.1,
+          marginBottom: '64px',
           display: 'flex',
         }}>
-           Software Engineer
+          Software Engineer
         </div>
 
         {/* Tagline */}
