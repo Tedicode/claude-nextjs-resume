@@ -7,6 +7,12 @@ export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
 export default async function Image() {
+  const [imFellEnglish, imFellEnglishItalic, dmMono] = await Promise.all([
+    fetch('https://fonts.gstatic.com/s/imfellenglish/v14/Ktk1ALSLW8zDe0rthJysWrnLsAz3Fw.ttf').then((res) => res.arrayBuffer()),
+    fetch('https://fonts.gstatic.com/s/imfellenglish/v14/Ktk3ALSLW8zDe0rthJysWrnLsAzHFaOd.ttf').then((res) => res.arrayBuffer()),
+    fetch('https://fonts.gstatic.com/s/dmmono/v16/aFTU7PB1QTsUX8KYhh0.ttf').then((res) => res.arrayBuffer()),
+  ])
+
   return new ImageResponse(
     (
       <div
@@ -18,7 +24,7 @@ export default async function Image() {
           flexDirection: 'column',
           justifyContent: 'center',
           padding: '80px 100px',
-          fontFamily: 'Georgia, serif',
+          fontFamily: 'IM Fell English',
           position: 'relative',
         }}
       >
@@ -46,7 +52,7 @@ export default async function Image() {
 
         {/* Chapter label */}
         <div style={{
-          fontFamily: 'monospace',
+          fontFamily: 'DM Mono',
           fontSize: '36px',
           letterSpacing: '0.18em',
           textTransform: 'uppercase',
@@ -71,7 +77,7 @@ export default async function Image() {
 
         {/* Title */}
         <div style={{
-          fontFamily: 'monospace',
+          fontFamily: 'DM Mono',
           fontSize: '52px',
           letterSpacing: '0.12em',
           textTransform: 'uppercase',
@@ -94,6 +100,13 @@ export default async function Image() {
         </div>
       </div>
     ),
-    { ...size }
+    {
+      ...size,
+      fonts: [
+        { name: 'IM Fell English', data: imFellEnglish, weight: 400, style: 'normal' },
+        { name: 'IM Fell English', data: imFellEnglishItalic, weight: 400, style: 'italic' },
+        { name: 'DM Mono', data: dmMono, weight: 400, style: 'normal' },
+      ],
+    }
   )
 }
