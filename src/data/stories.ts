@@ -29,12 +29,12 @@ export const stories: Story[] = [
     id: 'scale',
     chapter: 'Scale & Impact',
     headline: 'Building the UI for 12,000 agents — every day.',
-    body: "The agent-facing app at New York Life isn't a side project — it's the primary tool for over 12,000 insurance agents nationwide. Built on React, Redux, and Material UI, the frontend handles everything from policy lookups to complex onboarding flows. Maintaining that at scale means thinking carefully about performance, consistency, and the cost of a bad deploy.",
+    body: "Our agent-facing app at New York Life is a primary sales tool for over 12,000 insurance agents nationwide. Built on React, Redux, and Material UI, the frontend handles extensive data capture and facilitation of complex sales flows. Maintaining this at scale means thinking carefully about UI, performance and infrastructure.",
     visual: {
       type: 'stat',
       stats: [
         { num: '12K+', label: 'Daily active users' },
-        { num: '2.5yr', label: 'Tenure & ownership' },
+        { num: '3.5yr', label: 'Tenure & ownership' },
         { num: 'React', label: 'Core stack' },
       ],
     },
@@ -42,14 +42,14 @@ export const stories: Story[] = [
     media: {
       title: 'Internal tooling at enterprise scale',
       description:
-        'Shipping UI changes that affect thousands of agents in real time means every PR matters. Feature flags, staged rollouts, and tight QA collaboration are part of the daily rhythm.',
+        'Shipping UI changes that affect thousands of agents in the field. Feature flags, staged rollouts, and tight collaboration with Business and QA are part of the daily rhythm.',
     },
   },
   {
     id: 'rbac',
     chapter: 'Architecture',
-    headline: 'Not all agents see the same app.',
-    body: "New York Life has a complex hierarchy — agents, managers, trainers, admins, and more. Rather than building separate apps, the team built a single UI with a role-based entitlement system that controls what each user sees and can do. I designed and implemented the frontend architecture for this system: a clean entitlements layer that gates components, routes, and API calls based on the user's role set.",
+    headline: 'Not all users see the same app.',
+    body: "New York Life has a complex hierarchy — agents, managers, trainers, admins, and more. Rather than building separate apps, the team built a single UI with a role-based entitlement system that controls what each user sees and can do. I worked on the frontend architecture for this system, coordinating with the entitlements layer from our backend to gate components, routes and API calls based on the user's role set.",
     visual: {
       type: 'flow',
       label: 'Entitlement resolution at login',
@@ -59,14 +59,14 @@ export const stories: Story[] = [
     media: {
       title: 'Differential access without duplication',
       description:
-        'The key insight: encode access rules in data, not in conditionals scattered across components. A centralized entitlements hook made the whole app easier to audit and extend.',
+        'Backend-sourced entitlements mapped into Redux allow actions such as application submission and PDF/email delivery. SSO Roles determine the delivery of extra features or alternate paths. A new Admin oversight mode, enabling session visibility into agent activity.',
     },
   },
   {
     id: 'storyblok',
     chapter: 'CMS Integration',
     headline: 'Giving the business team control of their own content.',
-    body: 'Before Storyblok, any copy or content change in the app required a developer, a PR, and a deploy. I led the end-to-end research and integration of Storyblok as the platform CMS — evaluating headless CMS options, prototyping the integration, and building the rendering layer that maps Storyblok components to our React component library. The result: the business team can now push content changes independently.',
+    body: 'Before Storyblok, any copy or content change in the app required a developer, a PR, and a deploy. I led the early research and built a POC, creating the integration of Storyblok into our app as the platform CMS. This entailed evaluating headless CMS options, prototyping the integration, and building the rendering layer that maps Storyblok components to our React component library. The result: the business team can now push content changes independently.',
     visual: {
       type: 'flow',
       label: 'Content delivery pipeline',
@@ -82,8 +82,8 @@ export const stories: Story[] = [
   {
     id: 'refactor',
     chapter: 'Refactor',
-    headline: 'Every mature app carries ghosts. I cleaned them out.',
-    body: 'As the NYL app grew from an MVP into a production system used by tens of thousands, the codebase accumulated technical debt — inconsistent patterns, legacy state management, duplicated logic, and a component structure that had outgrown its original design. I led the architectural refactor: identifying the highest-leverage cleanup targets, building the new patterns, and migrating legacy code without disrupting active feature development.',
+    headline: 'Every mature app carries ghosts.',
+    body: 'As our app has grown into a production system used by thousands, the codebase accumulated technical debt — inconsistent patterns, legacy state management, duplicated logic, and a component structure that had outgrown its original design. I owned, led, and contributed to several initiatives to improve legacy code without disrupting active feature development.',
     visual: {
       type: 'flow',
       label: 'Refactor approach',
@@ -93,14 +93,14 @@ export const stories: Story[] = [
     media: {
       title: 'Refactoring without stopping the clock',
       description:
-        'The challenge with big refactors: the business doesn\'t pause for cleanup. The solution was a strangler fig approach — introduce new patterns alongside old ones, migrate incrementally, and retire legacy code in phases.',
+        'I owned a major architectural refactor: decoupling a tangled launch point that was our app\'s root; I built a new routing pattern for one of our main entities: our Goals Routing; I refactored and migrated our global Infocenter into a CMS-enabled component. The challenge here: the business doesn\'t pause for cleanup. The solution was to introduce a new pattern that could coexist alongside the old, migrate incrementally, and retire legacy code in phases. I participated in an early upgrade of our app to React 18 with MUI5 and emotion CSS library.',
     },
   },
   {
     id: 'companion',
     chapter: 'Product Ownership',
-    headline: 'A second window. A new mode. Both mine from zero.',
-    body: "Two of the most complex features I've shipped at NYL were ones I owned entirely from concept to production: a companion window that lets agents run a parallel context alongside the main app, and a session-driven mode that restructures the entire UX around a time-boxed agent session. Both required deep collaboration with design and product, non-trivial state architecture, and careful attention to edge cases in a live enterprise environment.",
+    headline: 'A Companion window. A Practice mode.',
+    body: "Two of the most complex features I've shipped at NYL were ones I owned entirely from concept to production: a companion window that lets agents run a parallel context alongside the main app, and a session-driven mode that provides alternative content, functionality and styling. Both required collaboration with design and product team and non-trivial state architecture. I was able to ship both features in under 2 months.",
     visual: {
       type: 'flow',
       label: 'Session-driven mode lifecycle',
@@ -110,7 +110,7 @@ export const stories: Story[] = [
     media: {
       title: 'Owning a feature end to end',
       description:
-        'The companion window required solving a hard problem: two synchronized contexts in the same app, without duplicating state or creating race conditions. The session-driven mode added a layer of time-awareness to an app that was previously stateless between visits.',
+        'The companion window required solving a hard problem: two synchronized contexts in the same app, without duplicating state or creating race conditions. Practice Mode added a layer of session-awareness to our Infocenter, which was previously stateless, and this also provided a scaleable blueprint for extending and adding additional session-driven modes in the future.',
     },
   },
 ]
