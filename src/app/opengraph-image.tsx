@@ -47,7 +47,7 @@ export default async function Image() {
         {/* Chapter label */}
         <div style={{
           fontFamily: 'monospace',
-          fontSize: '26px',
+          fontSize: '36px',
           letterSpacing: '0.18em',
           textTransform: 'uppercase',
           color: '#999',
@@ -72,7 +72,7 @@ export default async function Image() {
         {/* Title */}
         <div style={{
           fontFamily: 'monospace',
-          fontSize: '42px',
+          fontSize: '52px',
           letterSpacing: '0.12em',
           textTransform: 'uppercase',
           color: '#555',
@@ -84,7 +84,7 @@ export default async function Image() {
 
         {/* Tagline */}
         <div style={{
-          fontSize: '30px',
+          fontSize: '40px',
           color: '#888',
           fontStyle: 'italic',
           display: 'flex',
