@@ -195,8 +195,10 @@ function BulletItem({ bullet, onClick }: { bullet: Bullet; onClick?: () => void 
   const isClickable = !!onClick
 
   return (
-    <li
+    <motion.li
       onClick={onClick}
+      whileHover={isClickable ? { scale: 1.06, color: '#111', zIndex: 1 } : undefined}
+      transition={{ duration: 0.2, ease: 'easeOut' }}
       style={{
         fontFamily: 'var(--font-serif)',
         fontSize: '12.5px',
@@ -208,12 +210,7 @@ function BulletItem({ bullet, onClick }: { bullet: Bullet; onClick?: () => void 
         display: 'flex',
         alignItems: 'baseline',
         gap: '4px',
-      }}
-      onMouseEnter={e => {
-        if (isClickable) (e.currentTarget as HTMLLIElement).style.color = '#111'
-      }}
-      onMouseLeave={e => {
-        if (isClickable) (e.currentTarget as HTMLLIElement).style.color = '#333'
+        transformOrigin: 'left center',
       }}
     >
       <span style={{
@@ -236,7 +233,7 @@ function BulletItem({ bullet, onClick }: { bullet: Bullet; onClick?: () => void 
           alignSelf: 'center',
         }}>↗</span>
       )}
-    </li>
+    </motion.li>
   )
 }
 
