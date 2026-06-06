@@ -30,8 +30,10 @@ export type Project = {
 
 export const skills: Skill[] = [
   { id: 'javascript', name: 'JavaScript', description: 'Core language for building interactive web applications on both client and server', associations: [{ type: 'school', school: 'Fullstack Academy' }] },
+  { id: 'typescript', name: 'TypeScript', description: 'A superset of JavaScript that adds static typing', associations: [{ type: 'project', name: 'Interactive Resume with Claude', url: 'https://claude-nextjs-resume.vercel.app' }] },
   { id: 'react', name: 'React', description: 'A JavaScript library for building user interfaces', associations: [{ type: 'work', company: 'New York Life' }, { type: 'school', school: 'Fullstack Academy' }] },
   { id: 'redux', name: 'Redux', description: 'Predictable state container for managing complex application state', associations: [{ type: 'work', company: 'New York Life' }] },
+  { id: 'nextjs', name: 'Next.js', description: 'A React framework for building server-side rendered applications', associations: [{ type: 'project', name: 'Interactive Resume with Claude', url: 'https://claude-nextjs-resume.vercel.app' }] },
   { id: 'node', name: 'Node', description: 'JavaScript runtime for building server-side applications and APIs', associations: [{ type: 'school', school: 'Fullstack Academy' }] },
   { id: 'rest', name: 'REST', description: 'Architectural style for designing and consuming HTTP-based APIs', associations: [{ type: 'work', company: 'New York Life' }] },
   { id: 'express', name: 'Express', description: 'Minimal Node.js web framework for building REST APIs and middleware', associations: [{ type: 'school', school: 'Fullstack Academy' }] },
@@ -51,8 +53,6 @@ export const skills: Skill[] = [
   { id: 'github', name: 'GitHub', description: 'Platform for hosting repositories, code review, and CI/CD workflows' },
   { id: 'figma', name: 'Figma', description: 'Collaborative design tool for UI mockups, prototypes, and design handoff' },
   { id: 'jira', name: 'Jira', description: 'Project management tool for tracking sprints, tickets, and agile workflows', associations: [{ type: 'work', company: 'New York Life' }] },
-  { id: 'nextjs', name: 'Next.js', description: 'A React framework for building server-side rendered applications', associations: [{ type: 'project', name: 'Interactive Resume with Claude', url: 'https://claude-nextjs-resume.vercel.app' }] },
-  { id: 'typescript', name: 'TypeScript', description: 'A superset of JavaScript that adds static typing', associations: [{ type: 'project', name: 'Interactive Resume with Claude', url: 'https://claude-nextjs-resume.vercel.app' }] },
   { id: 'motion', name: 'Motion', description: 'A library for creating animations and transitions', skillLevel: 'beginner', associations: [{ type: 'project', name: 'Interactive Resume with Motion', url: 'https://motion-nextjs-resume.vercel.app' }] },
 ]
 
@@ -63,19 +63,19 @@ export type ResumeSkillEntry = {
 
 export const resumePrimarySkills: ResumeSkillEntry[] = [
   { skillId: 'javascript', clickable: true },
+  { skillId: 'typescript', clickable: true },
   { skillId: 'react', clickable: true },
   { skillId: 'redux', clickable: true },
+  { skillId: 'nextjs', clickable: true },
   { skillId: 'node', clickable: true },
   { skillId: 'rest', clickable: true },
+  { skillId: 'mui', clickable: true },
   { skillId: 'express', clickable: true },
   { skillId: 'sequelize', clickable: true },
   { skillId: 'postgresql', clickable: true },
   { skillId: 'html-css' },
-  { skillId: 'mui', clickable: true },
   { skillId: 'emotion', clickable: true },
   { skillId: 'wcag-2.0' },
-  { skillId: 'nextjs', clickable: true },
-  { skillId: 'typescript', clickable: true },
   { skillId: 'motion', clickable: true },
 ]
 
