@@ -11,12 +11,12 @@ type Bullet = {
 
 const nylBullets: Bullet[] = [
   { text: 'Develop and maintain UI (React/Redux/MUI) and API contracts of internal agent-facing app (12,000 users)', storyId: 'scale' },
-  { text: 'Collaborate closely with business, QA, design and backend teams to deliver features in AGILE fashion' },
+  // { text: 'Collaborate closely with business, QA, design and backend teams to deliver features in AGILE fashion' },
   { text: 'Implemented role-based architecture leveraging entitlements for differential access and experience', storyId: 'rbac' },
   { text: 'Led the research and development for our platform integration of Storyblok CMS', storyId: 'storyblok' },
   { text: 'Performed architectural cleanups and major refactor of frontend foundation for the maturing app', storyId: 'refactor' },
   { text: 'Owned and led the creation of the application\'s companion window and a new session-driven mode', storyId: 'companion' },
-  { text: 'Present demos at high level for business stakeholders and at technical level for internal teams' },
+  // { text: 'Present demos at high level for business stakeholders and at technical level for internal teams' },
 ]
 
 type Props = {

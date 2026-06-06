@@ -161,7 +161,7 @@ export default function StoryOverlay({ story, onCloseStory }: Props) {
                 <div style={{ fontSize: '12px', color: '#333', marginBottom: '4px' }}>
                   {story.media.title}
                 </div>
-                <div>{story.media.description}</div>
+                <div style={{whiteSpace: 'break-spaces'}}>{story.media.description}</div>
               </div>
 
               {/* Tags  test*/}

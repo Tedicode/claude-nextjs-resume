@@ -42,7 +42,7 @@ export const stories: Story[] = [
     media: {
       title: 'Internal tooling at enterprise scale',
       description:
-        'Shipping UI changes that affect thousands of agents in the field. Feature flags, staged rollouts, and tight collaboration with Business and QA are part of the daily rhythm.',
+        'Shipping UI changes that affect thousands of agents in the field. Feature flags, staged rollouts, and tight collaboration with Business and QA are part of the daily rhythm.\n\nPresenting regular demos at a high level for business stakeholders, and at a technical level for internal teams, has been crucial to our iterative process.',
     },
   },
   {
