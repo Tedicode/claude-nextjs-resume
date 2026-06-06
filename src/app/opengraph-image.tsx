@@ -79,7 +79,7 @@ export default async function Image() {
           marginBottom: '40px',
           display: 'flex',
         }}>
-          Frontend Software Developer
+           Software Engineer
         </div>
 
         {/* Tagline */}
@@ -89,7 +89,7 @@ export default async function Image() {
           fontStyle: 'italic',
           display: 'flex',
         }}>
-          Click any bullet to go deeper.
+          Click any bullet to learn more.
         </div>
       </div>
     ),
